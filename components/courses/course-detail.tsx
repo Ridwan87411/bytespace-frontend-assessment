@@ -43,7 +43,6 @@ export default function CourseDetail({ course }: { course: Course }) {
 
   return (
     <main className={styles.page}>
-      <div className={styles.blueBackground} aria-hidden="true" />
       <div className={styles.header}><SiteHeader /></div>
       <div className={styles.container}>
         <div className={styles.heading}>
@@ -59,10 +58,12 @@ export default function CourseDetail({ course }: { course: Course }) {
 
         <div className={styles.layout}>
           <div className={styles.mainColumn}>
-            <button className={styles.preview} type="button" onClick={() => previewRef.current?.showModal()} aria-label={`Open preview for ${course.title}`}>
-              <Image src={course.image} alt={course.title} fill priority sizes="(max-width: 767px) 100vw, 700px" className={styles.cover} />
-              <span className={styles.play} aria-hidden="true">▶</span><span className={styles.previewLabel}>Course preview</span>
-            </button>
+            <div className={styles.previewStage}>
+              <button className={styles.preview} type="button" onClick={() => previewRef.current?.showModal()} aria-label={`Open preview for ${course.title}`}>
+                <Image src={course.image} alt={course.title} fill priority sizes="(max-width: 767px) 100vw, 700px" className={styles.cover} />
+                <span className={styles.play} aria-hidden="true">▶</span><span className={styles.previewLabel}>Course preview</span>
+              </button>
+            </div>
 
             <div ref={contentRef} className={styles.content}>
               <div role="tablist" aria-label="Course information" className={styles.tabs}>
