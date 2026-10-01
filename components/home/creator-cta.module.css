@@ -1,0 +1,102 @@
+.decorations {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  user-select: none;
+}
+
+.shape {
+  position: absolute;
+  animation: float 12s linear infinite;
+  will-change: transform;
+}
+
+.image { object-fit: contain; }
+.lime { filter: brightness(0.95) sepia(1) saturate(18) hue-rotate(15deg); }
+
+.topSpiral {
+  width: clamp(120px, 17vw, 260px);
+  height: 270px;
+  left: -65px;
+  top: -95px;
+  animation-delay: -5s;
+}
+
+.whiteSpiral {
+  width: clamp(75px, 10vw, 145px);
+  height: 145px;
+  left: 12%;
+  top: 0;
+  animation-duration: 14s;
+  animation-delay: -8s;
+}
+
+.whiteCone {
+  width: clamp(100px, 12vw, 180px);
+  height: 180px;
+  left: -65px;
+  bottom: 45px;
+  rotate: -25deg;
+  animation-delay: -3s;
+}
+
+.limeRing {
+  width: clamp(150px, 20vw, 280px);
+  height: 260px;
+  left: 2%;
+  bottom: -145px;
+  animation-duration: 16s;
+  animation-delay: -7s;
+}
+
+.limePyramid {
+  width: clamp(100px, 12vw, 170px);
+  height: 160px;
+  right: 13%;
+  top: -5px;
+  animation-duration: 15s;
+  animation-delay: -4s;
+}
+
+.whiteCylinder {
+  width: clamp(120px, 16vw, 240px);
+  height: 290px;
+  right: -45px;
+  top: 0;
+  filter: grayscale(1) brightness(1.12);
+  animation-duration: 17s;
+  animation-delay: -10s;
+}
+
+.bottomSpiral {
+  width: clamp(130px, 18vw, 245px);
+  height: 235px;
+  right: 2%;
+  bottom: -100px;
+  animation-duration: 13s;
+  animation-delay: -6s;
+}
+
+@keyframes float {
+  /* Counter-rotation keeps each shape upright through a continuous orbit. */
+  from { transform: rotate(0deg) translate3d(10px, 0, 0) rotate(0deg); }
+  to { transform: rotate(360deg) translate3d(10px, 0, 0) rotate(-360deg); }
+}
+
+@media (max-width: 1023px) {
+  .whiteSpiral { left: 2%; top: -55px; }
+  .limePyramid { right: 7%; top: -70px; }
+  .whiteCylinder { right: -90px; top: -80px; }
+  .whiteCone { bottom: -40px; }
+}
+
+@media (max-width: 640px) {
+  .topSpiral { top: -155px; left: -50px; }
+  .whiteSpiral, .whiteCone { display: none; }
+  .limeRing { left: -65px; bottom: -175px; }
+  .bottomSpiral { right: -40px; bottom: -145px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .shape { animation: none; will-change: auto; }
+}

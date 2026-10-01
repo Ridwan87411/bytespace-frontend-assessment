@@ -1,0 +1,90 @@
+﻿.section {
+  border-bottom: 1px solid #eef0f3;
+  background: #f7f7f7;
+}
+
+.container {
+  position: relative;
+  max-width: 1152px;
+  margin-inline: auto;
+  padding-right: 48px;
+}
+
+.viewport {
+  overflow: hidden;
+  mask-image: linear-gradient(to right, transparent, black 6%, black 94%, transparent);
+}
+
+.track {
+  display: flex;
+  width: max-content;
+  animation: glide 38s linear infinite;
+  will-change: transform;
+}
+
+.group {
+  display: flex;
+  flex-shrink: 0;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.brand {
+  display: flex;
+  flex: 0 0 210px;
+  width: 210px;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  min-height: 92px;
+  color: #475569;
+  font-size: 19px;
+  font-weight: 700;
+  letter-spacing: -0.6px;
+  white-space: nowrap;
+}
+
+.brand:nth-child(2) { font-family: Georgia, serif; font-style: italic; font-size: 22px; }
+.brand:nth-child(3) { font-family: monospace; font-size: 18px; letter-spacing: -1px; }
+.brand:nth-child(4) { font-weight: 500; letter-spacing: -0.8px; }
+.brand:nth-child(6) { font-weight: 800; }
+
+.track[data-paused="true"] { animation-play-state: paused; }
+.viewport:hover .track { animation-play-state: paused; }
+
+.pause {
+  position: absolute;
+  right: 4px;
+  top: 50%;
+  display: grid;
+  place-items: center;
+  width: 40px;
+  height: 40px;
+  transform: translateY(-50%);
+  border: 1px solid #e2e8f0;
+  border-radius: 50%;
+  background: #fff;
+  color: #64748b;
+  cursor: pointer;
+}
+
+.pause:hover { color: #003be2; border-color: #003be2; }
+.pause:focus-visible { outline: 2px solid #003be2; outline-offset: 3px; }
+
+@keyframes glide {
+  to { transform: translateX(-50%); }
+}
+
+@media (max-width: 640px) {
+  .brand { min-height: 80px; flex-basis: 185px; width: 185px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .container { padding-right: 0; }
+  .viewport { mask-image: none; }
+  .track { width: 100%; animation: none; will-change: auto; }
+  .group { width: 100%; flex-wrap: wrap; justify-content: center; }
+  .brand { flex-basis: 170px; min-height: 72px; }
+  .group[aria-hidden="true"], .pause { display: none; }
+}
